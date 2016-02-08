@@ -8,6 +8,8 @@
     xmlns:ctrl="using:StrasbourgTransport.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,16 +26,60 @@
         <ListView Grid.Row="1" ItemsSource="{x:Bind VM.TrafficInfoResults}" Visibility="{x:Bind VM.IsDataLoading, Mode=OneWay, Converter={StaticResource ReverseBoolToVisibilityConverter}}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:TrafficInfoResult">
-                    <StackPanel>
-                        <StackPanel.Resources>
+
+                    <Grid Background="White" Margin="20,10,20,0">
+                        <Grid.Resources>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Foreground" Value="Black"/>
                             </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="{x:Bind Title}" />
-                    </StackPanel>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+
+                        <Border CornerRadius="8"
+                                Grid.RowSpan="2"
+                                Margin="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Assets/cts-logo.png" />
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Column="1">
+                            <TextBlock Text="CTS_Infos trafic"
+                                   FontSize="17"
+                                   FontWeight="Bold"/>
+                            <TextBlock 
+                                Text="@CTS_Infostrafic" 
+                                VerticalAlignment="Center"
+                                Margin="7,0,0,0"
+                                Foreground="Gray"
+                                FontSize="13" />
+                        </StackPanel>
+                        
+                        <TextBlock Text="{x:Bind Title}" 
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                       Margin="10, 0, 0, 0"
+                                   FontSize="{x:Bind FontSize}"
+                                   FontWeight="{x:Bind Weight}"
+                                   TextWrapping="WrapWholeWords"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
     </Grid>

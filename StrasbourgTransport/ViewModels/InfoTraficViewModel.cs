@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Windows.UI.Text;
 
 namespace StrasbourgTransport.ViewModels
 {
@@ -19,9 +20,13 @@ namespace StrasbourgTransport.ViewModels
             get; private set;
         }
 
+        private Random _randomEngine;
+
         public InfoTraficViewModel()
         {
             TrafficInfoResults = new ObservableCollection<TrafficInfoResult>();
+
+            _randomEngine = new Random();
         }
 
         public async void GetTrafficInfoData()
@@ -34,9 +39,16 @@ namespace StrasbourgTransport.ViewModels
             if (httpResponse.IsSuccessStatusCode)
             {
                 string content = await httpResponse.Content.ReadAsStringAsync();
-                var trafficInfoList = XDocument.Parse(content).Descendants("item").Select(i => new TrafficInfoResult
+                var trafficInfoList = XDocument.Parse(content).Descendants("item").Select(i =>
                 {
-                    Title = i.Element("title").Value,
+                    var randomBiggerTweet = IsFontBigger();
+
+                    return new TrafficInfoResult
+                    {
+                        Title = i.Element("title").Value,
+                        FontSize = randomBiggerTweet ? 22 : 15,
+                        Weight = randomBiggerTweet ? FontWeights.Bold : FontWeights.Normal
+                    };
                 }).ToList();
 
                 TrafficInfoResults.Clear();
@@ -47,6 +59,13 @@ namespace StrasbourgTransport.ViewModels
             }
 
             IsDataLoading = false;
+        }
+
+        // Randomly say if the font is bigger than the "normal size"
+        // Twitter-like effect
+        public bool IsFontBigger()
+        {
+            return _randomEngine.Next(0, 11) > 8;
         }
     }
 }

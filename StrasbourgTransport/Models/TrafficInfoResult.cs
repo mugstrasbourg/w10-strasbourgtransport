@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Text;
 
 namespace StrasbourgTransport.Models
 {
@@ -17,5 +18,8 @@ namespace StrasbourgTransport.Models
         {
             get; set;
         }
+
+        public int FontSize { get; set; }
+        public FontWeight Weight { get; set; }
     }
 }
