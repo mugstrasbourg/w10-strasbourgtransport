@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,7 +24,7 @@
             <ImageBrush ImageSource="/Assets/1900x1225.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <SplitView x:Name="StrasSplitView">
-            
+
             <SplitView.Pane>
                 <Grid Background="White">
                     <Grid.RowDefinitions>

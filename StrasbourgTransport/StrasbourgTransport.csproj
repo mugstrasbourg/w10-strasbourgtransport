@@ -118,12 +118,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services\CtsMessageHeader.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\IDataService.cs" />
     <Compile Include="ViewModels\FavorisViewModel.cs" />
     <Compile Include="ViewModels\InfoTraficViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelDataLoading.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FavorisPage.xaml.cs">
       <DependentUpon>FavorisPage.xaml</DependentUpon>
@@ -131,8 +134,8 @@
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InfoTrafic.xaml.cs">
-      <DependentUpon>InfoTrafic.xaml</DependentUpon>
+    <Compile Include="Views\InfoTraficPage.xaml.cs">
+      <DependentUpon>InfoTraficPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,19 +144,19 @@
     </AppxManifest>
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
     <None Include="Service References\CtsService\Service.wsdl" />
-    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.MessageArriveesAppliWeb.datasource">
+    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.deviationsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.MessageDeviations.datasource">
+    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.infosTraficResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.MessageFichesHoraires.datasource">
+    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.rechercheFichesHorairesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.MessageInfosTrafic.datasource">
+    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.rechercheProchainesArriveesWebResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.MessageRechercheCodeArret.datasource">
+    <None Include="Service References\CtsService\StrasbourgTransport.CtsService.rechercherCodesArretsDepuisLibelleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="StrasbourgTransport_TemporaryKey.pfx" />
@@ -196,7 +199,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\About.xaml">
+    <Page Include="Views\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InfoTrafic.xaml">
+    <Page Include="Views\InfoTraficPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

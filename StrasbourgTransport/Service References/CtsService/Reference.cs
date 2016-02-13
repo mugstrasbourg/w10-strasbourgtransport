@@ -20,27 +20,27 @@ namespace StrasbourgTransport.CtsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.cts-strasbourg.fr/rechercherCodesArretsDepuisLibelle", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageRechercheCodeArret> rechercherCodesArretsDepuisLibelleAsync(string Saisie, int NoPage);
+        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercherCodesArretsDepuisLibelleResponse> rechercherCodesArretsDepuisLibelleAsync(StrasbourgTransport.CtsService.rechercherCodesArretsDepuisLibelleRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.cts-strasbourg.fr/rechercheProchainesArriveesWeb", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageArriveesAppliWeb> rechercheProchainesArriveesWebAsync(string CodeArret, int Mode, string Heure, int NbHoraires);
+        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercheProchainesArriveesWebResponse> rechercheProchainesArriveesWebAsync(StrasbourgTransport.CtsService.rechercheProchainesArriveesWebRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.cts-strasbourg.fr/rechercheFichesHoraires", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageFichesHoraires> rechercheFichesHorairesAsync(string CodeArret);
+        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercheFichesHorairesResponse> rechercheFichesHorairesAsync(StrasbourgTransport.CtsService.rechercheFichesHorairesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.cts-strasbourg.fr/infosTrafic", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageInfosTrafic> infosTraficAsync();
+        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.infosTraficResponse> infosTraficAsync(StrasbourgTransport.CtsService.infosTraficRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.cts-strasbourg.fr/deviations", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageDeviations> deviationsAsync();
+        System.Threading.Tasks.Task<StrasbourgTransport.CtsService.deviationsResponse> deviationsAsync(StrasbourgTransport.CtsService.deviationsRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class MessageRechercheCodeArret : object, System.ComponentModel.INotifyPropertyChanged {
@@ -84,7 +84,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class Arret : object, System.ComponentModel.INotifyPropertyChanged {
@@ -128,7 +128,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class Deviation : object, System.ComponentModel.INotifyPropertyChanged {
@@ -270,7 +270,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class MessageDeviations : object, System.ComponentModel.INotifyPropertyChanged {
@@ -300,7 +300,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class InfoTrafic : object, System.ComponentModel.INotifyPropertyChanged {
@@ -386,7 +386,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class MessageInfosTrafic : object, System.ComponentModel.INotifyPropertyChanged {
@@ -416,7 +416,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class FicheHoraire : object, System.ComponentModel.INotifyPropertyChanged {
@@ -544,7 +544,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class MessageFichesHoraires : object, System.ComponentModel.INotifyPropertyChanged {
@@ -574,7 +574,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class Arrivee : object, System.ComponentModel.INotifyPropertyChanged {
@@ -646,7 +646,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class MessageArriveesAppliWeb : object, System.ComponentModel.INotifyPropertyChanged {
@@ -704,7 +704,7 @@ namespace StrasbourgTransport.CtsService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1028.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.cts-strasbourg.fr/")]
     public partial class CredentialHeader : object, System.ComponentModel.INotifyPropertyChanged {
@@ -744,6 +744,168 @@ namespace StrasbourgTransport.CtsService {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercherCodesArretsDepuisLibelle", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercherCodesArretsDepuisLibelleRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public string Saisie;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=1)]
+        public int NoPage;
+        
+        public rechercherCodesArretsDepuisLibelleRequest() {
+        }
+        
+        public rechercherCodesArretsDepuisLibelleRequest(string Saisie, int NoPage) {
+            this.Saisie = Saisie;
+            this.NoPage = NoPage;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercherCodesArretsDepuisLibelleResponse", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercherCodesArretsDepuisLibelleResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public StrasbourgTransport.CtsService.MessageRechercheCodeArret rechercherCodesArretsDepuisLibelleResult;
+        
+        public rechercherCodesArretsDepuisLibelleResponse() {
+        }
+        
+        public rechercherCodesArretsDepuisLibelleResponse(StrasbourgTransport.CtsService.MessageRechercheCodeArret rechercherCodesArretsDepuisLibelleResult) {
+            this.rechercherCodesArretsDepuisLibelleResult = rechercherCodesArretsDepuisLibelleResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercheProchainesArriveesWeb", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercheProchainesArriveesWebRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public string CodeArret;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=1)]
+        public int Mode;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=2)]
+        public string Heure;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=3)]
+        public int NbHoraires;
+        
+        public rechercheProchainesArriveesWebRequest() {
+        }
+        
+        public rechercheProchainesArriveesWebRequest(string CodeArret, int Mode, string Heure, int NbHoraires) {
+            this.CodeArret = CodeArret;
+            this.Mode = Mode;
+            this.Heure = Heure;
+            this.NbHoraires = NbHoraires;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercheProchainesArriveesWebResponse", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercheProchainesArriveesWebResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public StrasbourgTransport.CtsService.MessageArriveesAppliWeb rechercheProchainesArriveesWebResult;
+        
+        public rechercheProchainesArriveesWebResponse() {
+        }
+        
+        public rechercheProchainesArriveesWebResponse(StrasbourgTransport.CtsService.MessageArriveesAppliWeb rechercheProchainesArriveesWebResult) {
+            this.rechercheProchainesArriveesWebResult = rechercheProchainesArriveesWebResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercheFichesHoraires", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercheFichesHorairesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public string CodeArret;
+        
+        public rechercheFichesHorairesRequest() {
+        }
+        
+        public rechercheFichesHorairesRequest(string CodeArret) {
+            this.CodeArret = CodeArret;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rechercheFichesHorairesResponse", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class rechercheFichesHorairesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public StrasbourgTransport.CtsService.MessageFichesHoraires rechercheFichesHorairesResult;
+        
+        public rechercheFichesHorairesResponse() {
+        }
+        
+        public rechercheFichesHorairesResponse(StrasbourgTransport.CtsService.MessageFichesHoraires rechercheFichesHorairesResult) {
+            this.rechercheFichesHorairesResult = rechercheFichesHorairesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="infosTrafic", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class infosTraficRequest {
+        
+        public infosTraficRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="infosTraficResponse", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class infosTraficResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public StrasbourgTransport.CtsService.MessageInfosTrafic infosTraficResult;
+        
+        public infosTraficResponse() {
+        }
+        
+        public infosTraficResponse(StrasbourgTransport.CtsService.MessageInfosTrafic infosTraficResult) {
+            this.infosTraficResult = infosTraficResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deviations", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class deviationsRequest {
+        
+        public deviationsRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deviationsResponse", WrapperNamespace="http://www.cts-strasbourg.fr/", IsWrapped=true)]
+    public partial class deviationsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.cts-strasbourg.fr/", Order=0)]
+        public StrasbourgTransport.CtsService.MessageDeviations deviationsResult;
+        
+        public deviationsResponse() {
+        }
+        
+        public deviationsResponse(StrasbourgTransport.CtsService.MessageDeviations deviationsResult) {
+            this.deviationsResult = deviationsResult;
         }
     }
     
@@ -790,24 +952,24 @@ namespace StrasbourgTransport.CtsService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageRechercheCodeArret> rechercherCodesArretsDepuisLibelleAsync(string Saisie, int NoPage) {
-            return base.Channel.rechercherCodesArretsDepuisLibelleAsync(Saisie, NoPage);
+        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercherCodesArretsDepuisLibelleResponse> rechercherCodesArretsDepuisLibelleAsync(StrasbourgTransport.CtsService.rechercherCodesArretsDepuisLibelleRequest request) {
+            return base.Channel.rechercherCodesArretsDepuisLibelleAsync(request);
         }
         
-        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageArriveesAppliWeb> rechercheProchainesArriveesWebAsync(string CodeArret, int Mode, string Heure, int NbHoraires) {
-            return base.Channel.rechercheProchainesArriveesWebAsync(CodeArret, Mode, Heure, NbHoraires);
+        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercheProchainesArriveesWebResponse> rechercheProchainesArriveesWebAsync(StrasbourgTransport.CtsService.rechercheProchainesArriveesWebRequest request) {
+            return base.Channel.rechercheProchainesArriveesWebAsync(request);
         }
         
-        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageFichesHoraires> rechercheFichesHorairesAsync(string CodeArret) {
-            return base.Channel.rechercheFichesHorairesAsync(CodeArret);
+        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.rechercheFichesHorairesResponse> rechercheFichesHorairesAsync(StrasbourgTransport.CtsService.rechercheFichesHorairesRequest request) {
+            return base.Channel.rechercheFichesHorairesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageInfosTrafic> infosTraficAsync() {
-            return base.Channel.infosTraficAsync();
+        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.infosTraficResponse> infosTraficAsync(StrasbourgTransport.CtsService.infosTraficRequest request) {
+            return base.Channel.infosTraficAsync(request);
         }
         
-        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.MessageDeviations> deviationsAsync() {
-            return base.Channel.deviationsAsync();
+        public System.Threading.Tasks.Task<StrasbourgTransport.CtsService.deviationsResponse> deviationsAsync(StrasbourgTransport.CtsService.deviationsRequest request) {
+            return base.Channel.deviationsAsync(request);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

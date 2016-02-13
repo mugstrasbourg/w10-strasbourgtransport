@@ -1,22 +1,18 @@
-﻿using StrasbourgTransport.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StrasbourgTransport.CtsService;
-using StrasbourgTransport.Services;
-using System.ServiceModel;
+﻿using GalaSoft.MvvmLight;
 using StrasbourgTransport.Common;
-using Windows.UI.Xaml.Controls;
+using StrasbourgTransport.Models;
+using StrasbourgTransport.Services;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Windows.Storage;
-using System.ComponentModel;
+using Windows.UI.Xaml.Controls;
 
 namespace StrasbourgTransport.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase
     {
+        private readonly IDataService _dataService;
+
         private bool _sResultVisible;
         public bool IsResultVisible
         {
@@ -24,7 +20,7 @@ namespace StrasbourgTransport.ViewModels
             set
             {
                 _sResultVisible = value;
-                NotifyPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -44,7 +40,7 @@ namespace StrasbourgTransport.ViewModels
             set
             {
                 _currentStop = value;
-                NotifyPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
@@ -53,8 +49,10 @@ namespace StrasbourgTransport.ViewModels
         public RelayCommand<AutoSuggestBoxSuggestionChosenEventArgs> GetJourneyResultsCommand { private set; get; }
         public RelayCommand PinStopCommand { get; private set; }
 
-        public MainViewModel()
+        public HomeViewModel(IDataService dataService)
         {
+            _dataService = dataService;
+
             StopResults = new ObservableCollection<StopResult>();
             TramResults = new ObservableCollection<JourneyResult>();
             BusResults = new ObservableCollection<JourneyResult>();
@@ -99,63 +97,33 @@ namespace StrasbourgTransport.ViewModels
 
         private async Task GetStopsCodeByName(string stopName)
         {
-            ServiceSoapClient client = new ServiceSoapClient();
-            using (OperationContextScope scope = new OperationContextScope(client.InnerChannel))
+            var stops = await _dataService.GetStopsByName(stopName);
+
+            StopResults.Clear();
+            foreach (var stop in stops)
             {
-                OperationContext.Current.OutgoingMessageHeaders.Add(new CtsMessageHeader());
-                var result = await client.rechercherCodesArretsDepuisLibelleAsync(stopName, 1);
-
-                StopResults.Clear();
-                foreach (var arret in result.ListeArret)
-                {
-                    StopResults.Add(new StopResult
-                    {
-                        Code = arret.Code,
-                        Name = arret.Libelle
-                    });
-
-                }
+                StopResults.Add(stop);
             }
         }
 
         internal async Task GetJourneyResults(string stopCode)
         {
-            ServiceSoapClient client = new ServiceSoapClient();
-            using (OperationContextScope scope = new OperationContextScope(client.InnerChannel))
+            var journeys = await _dataService.GetJourneys(stopCode);
+
+            foreach (var journey in journeys)
             {
-                OperationContext.Current.OutgoingMessageHeaders.Add(new CtsMessageHeader());
-                var result = await client.rechercheProchainesArriveesWebAsync(stopCode, 0, DateTime.Now.ToString("HH:mm"), 3);
-
-                TramResults.Clear();
-                BusResults.Clear();
-
-                var lignes = Ligne.GetLignes();
-
-                foreach (var journey in result.ListeArrivee)
+                if (journey.Mode.Contains("Tram"))
                 {
-                    int indexWhiteSpace = journey.Destination.IndexOf(" ");
-                    string number = journey.Destination.Substring(0, indexWhiteSpace);
-
-                    JourneyResult journeyResult = new JourneyResult
-                    {
-                        Direction = journey.Destination.Remove(0, indexWhiteSpace).Trim(),
-                        Mode = journey.Mode,
-                        Time = journey.Horaire.Remove(journey.Horaire.Length - 3).Replace(':', 'h'),
-                        Ligne = lignes.Single(ligne => ligne.Number.Equals(number))
-                    };
-
-                    if (journey.Mode.Contains("Tram"))
-                    {
-                        TramResults.Add(journeyResult);
-                    }
-                    else if (journey.Mode.Contains("Bus"))
-                    {
-                        BusResults.Add(journeyResult);
-                    }
+                    TramResults.Add(journey);
                 }
-
-                this.IsResultVisible = true;
+                else if (journey.Mode.Contains("Bus"))
+                {
+                    BusResults.Add(journey);
+                }
             }
+
+            IsResultVisible = true;
         }
     }
 }
+

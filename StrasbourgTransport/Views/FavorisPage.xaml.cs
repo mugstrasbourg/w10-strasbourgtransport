@@ -22,13 +22,12 @@ namespace StrasbourgTransport.Views
     /// </summary>
     public sealed partial class FavorisPage : Page
     {
-        public FavorisViewModel VM { get { return (FavorisViewModel)DataContext; } }
+        public FavorisViewModel VM => (FavorisViewModel)DataContext;
+
         public ListView FavoriteLV { get { return this.FavoriteListView; } }
         public FavorisPage()
         {
             this.InitializeComponent();
-
-            DataContext = new FavorisViewModel();
         }
     }
 }

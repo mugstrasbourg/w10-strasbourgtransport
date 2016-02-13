@@ -1,4 +1,5 @@
 ﻿using StrasbourgTransport.Models;
+using StrasbourgTransport.ViewModels;
 using StrasbourgTransport.Views;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,7 +29,7 @@ namespace StrasbourgTransport
 
             // Pour récupérer l'élément sélectionner dans la page des Favoris
             // On navigue ensuite vers la page des horaires pré-chargés
-            if(frame.Content is FavorisPage)
+            if (frame.Content is FavorisPage)
             {
                 var favorisPage = frame.Content as FavorisPage;
                 favorisPage.FavoriteLV.ItemClick += FavoriteLV_ItemClick;
@@ -58,7 +59,7 @@ namespace StrasbourgTransport
         {
             var frame = this.StrasSplitView.Content as Frame;
 
-            frame.Navigate(typeof(InfoTrafic));
+            frame.Navigate(typeof(InfoTraficPage));
         }
 
         private void RadioHorairesButton_Click(object sender, RoutedEventArgs e)
@@ -72,7 +73,7 @@ namespace StrasbourgTransport
         {
             var frame = this.StrasSplitView.Content as Frame;
 
-            frame.Navigate(typeof(About));
+            frame.Navigate(typeof(AboutPage));
         }
 
         private void RadioFavorisButton_Click(object sender, RoutedEventArgs e)

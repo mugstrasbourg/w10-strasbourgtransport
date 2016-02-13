@@ -4,10 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ctrl="using:StrasbourgTransport.Controls"
     xmlns:converters="using:StrasbourgTransport.Converters"
+    xmlns:viewModels="using:StrasbourgTransport.ViewModels"
     RequestedTheme="Light">
 
     <Application.Resources>
         <ResourceDictionary>
+            <viewModels:ViewModelLocator x:Key="Locator"/>
             <converters:StringToBrushConverter x:Name="StringToBrushConverter"/>
             <converters:BoolToVisibilityConverter x:Name="BoolToVisibilityConverter" TrueValue="Visible" FalseValue="Collapsed" />
             <converters:BoolToVisibilityConverter x:Name="ReverseBoolToVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible" />

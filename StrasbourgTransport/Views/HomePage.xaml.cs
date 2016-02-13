@@ -24,12 +24,11 @@ namespace StrasbourgTransport.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        public MainViewModel VM { get { return (MainViewModel)this.DataContext; } }
+        public HomeViewModel VM => (HomeViewModel)this.DataContext;
+
         public HomePage()
         {
             this.InitializeComponent();
-
-            this.DataContext = new MainViewModel();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

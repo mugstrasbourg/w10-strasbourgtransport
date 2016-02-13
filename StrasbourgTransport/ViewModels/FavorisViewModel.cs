@@ -11,7 +11,7 @@ namespace StrasbourgTransport.ViewModels
 {
     public class FavorisViewModel
     {
-        public ObservableCollection<StopResult> FavoriteStops { get; set; }
+        public ObservableCollection<StopResult> FavoriteStops { get; private set; }
 
         public FavorisViewModel()
         {

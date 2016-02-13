@@ -1,5 +1,4 @@
-﻿using StrasbourgTransport.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,21 +20,22 @@ namespace StrasbourgTransport.Views
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class InfoTrafic : Page
+    public sealed partial class AboutPage : Page
     {
-        public InfoTraficViewModel VM { get { return (InfoTraficViewModel)this.DataContext; } }
-
-        public InfoTrafic()
+        public AboutPage()
         {
             this.InitializeComponent();
-            this.DataContext = new InfoTraficViewModel();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private async void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            base.OnNavigatedTo(e);
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://twitter.com/MUGStrasbourg"));
+        }
 
-            VM.GetTrafficInfoData();
+        private async void HyperlinkFacebook_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://www.facebook.com/groups/MugStrasbourg"));
+            
         }
     }
 }
