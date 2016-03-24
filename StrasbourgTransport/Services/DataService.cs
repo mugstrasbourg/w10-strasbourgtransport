@@ -18,7 +18,7 @@ namespace StrasbourgTransport.Services
         public async Task<IList<StopResult>> GetStopsByName(string stopName)
         {
             ServiceSoapClient client = new ServiceSoapClient();
-            using (OperationContextScope scope = new OperationContextScope(client.InnerChannel))
+            using (new OperationContextScope(client.InnerChannel))
             {
                 OperationContext.Current.OutgoingMessageHeaders.Add(new CtsMessageHeader());
                 var result = await client.rechercherCodesArretsDepuisLibelleAsync(new rechercherCodesArretsDepuisLibelleRequest
@@ -38,7 +38,7 @@ namespace StrasbourgTransport.Services
         public async Task<IList<JourneyResult>> GetJourneys(string stopCode)
         {
             ServiceSoapClient client = new ServiceSoapClient();
-            using (OperationContextScope scope = new OperationContextScope(client.InnerChannel))
+            using (new OperationContextScope(client.InnerChannel))
             {
                 OperationContext.Current.OutgoingMessageHeaders.Add(new CtsMessageHeader());
                 var result = await client.rechercheProchainesArriveesWebAsync(new rechercheProchainesArriveesWebRequest

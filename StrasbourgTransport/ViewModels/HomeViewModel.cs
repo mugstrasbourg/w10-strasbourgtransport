@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
+using Huyn.Utils;
 using StrasbourgTransport.Common;
 using StrasbourgTransport.Models;
 using StrasbourgTransport.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -49,6 +51,8 @@ namespace StrasbourgTransport.ViewModels
         public RelayCommand<AutoSuggestBoxSuggestionChosenEventArgs> GetJourneyResultsCommand { private set; get; }
         public RelayCommand PinStopCommand { get; private set; }
 
+        private readonly Delayer searchStopsWithDelay = new Delayer(TimeSpan.FromSeconds(0.5));
+
         public HomeViewModel(IDataService dataService)
         {
             _dataService = dataService;
@@ -57,11 +61,16 @@ namespace StrasbourgTransport.ViewModels
             TramResults = new ObservableCollection<JourneyResult>();
             BusResults = new ObservableCollection<JourneyResult>();
 
-            GetStopResultsCommand = new RelayCommand<AutoSuggestBoxTextChangedEventArgs>(async args =>
+            searchStopsWithDelay.Action += async (sender, e) =>
+            {
+                await GetStopsCodeByName(StopSearch);
+            };
+
+            GetStopResultsCommand = new RelayCommand<AutoSuggestBoxTextChangedEventArgs>(args =>
             {
                 if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput && StopSearch.Length > 2)
                 {
-                    await GetStopsCodeByName(StopSearch);
+                    searchStopsWithDelay.ResetAndTick();
                 }
             });
 

@@ -120,6 +120,7 @@
     <Compile Include="Services\CtsMessageHeader.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Utils\Delayer.cs" />
     <Compile Include="ViewModels\FavorisViewModel.cs" />
     <Compile Include="ViewModels\InfoTraficViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
